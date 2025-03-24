@@ -1,0 +1,6 @@
+
+streamlit~=1.31.1
+langchain_community 
+beautifulsoup4 
+langchain_huggingface
+gTTS
