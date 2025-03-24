@@ -21,7 +21,7 @@ st.title("News Sentiment Analyzer")
 st.sidebar.header("Configuration")
 
 company = st.sidebar.text_input("Enter Company Name", "apple")
-company = st.sidebar.text_input("Enter HuggingFace API TOKEN", "...")
+api_token = st.sidebar.text_input("Enter HuggingFace API TOKEN", "...")
 process_button = st.sidebar.button("Run Analysis")
 
 if process_button:
@@ -41,7 +41,7 @@ if process_button:
     # Step 3: Load Language Model
     progress_bar.progress(50)
     st.write("### Loading Sentiment Analysis Model...")
-    model = load_hf_model()
+    model = load_hf_model(api_token=api_token)
 
     article_parser = PydanticOutputParser(pydantic_object=Article)
     comp_diff_parser = PydanticOutputParser(pydantic_object=ComparativeSentimentScore)
