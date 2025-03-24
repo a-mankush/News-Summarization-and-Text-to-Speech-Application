@@ -82,6 +82,17 @@ if process_button:
         }
     )
 
+    # Display Results
+    st.write("## Final Sentiment Analysis")
+    st.json(
+        final_dict_result(
+            company,
+            article_result,
+            sentiment_dist,
+            comp_diff_list,
+            final_sentiment_result,
+        )
+    )
     # Step 6: Translate to Hindi
     progress_bar.progress(90)
     st.write("### Translating to Hindi...")
@@ -94,17 +105,6 @@ if process_button:
 
     st.success("Analysis Complete!")
 
-    # Display Results
-    st.write("## Final Sentiment Analysis")
-    st.json(
-        final_dict_result(
-            company,
-            article_result,
-            sentiment_dist,
-            comp_diff_list,
-            final_sentiment_result,
-        )
-    )
     st.write("### Hindi Translation")
     st.write(hindi_translation)
 
