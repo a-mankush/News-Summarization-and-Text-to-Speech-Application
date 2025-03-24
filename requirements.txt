@@ -4,3 +4,5 @@ langchain_community
 beautifulsoup4 
 langchain_huggingface
 gTTS
+
+sentencepiece
