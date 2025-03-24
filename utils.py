@@ -9,6 +9,8 @@ from gtts import gTTS
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
+import streamlit as st
+
 
 def get_article_links(company_name: str):
     url = f"https://timesofindia.indiatimes.com/topic/{company_name}"
@@ -37,6 +39,7 @@ def load_hf_model(repo_id="google/gemma-2-2b-it"):
     llm = HuggingFaceEndpoint(
         repo_id=repo_id,
         task="text-generation",
+        huggingfacehub_api_token=st.secrets["HF_TOKEN"],
     )
 
     return ChatHuggingFace(llm=llm)
