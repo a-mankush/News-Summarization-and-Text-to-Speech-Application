@@ -35,12 +35,16 @@ def get_article_text(links):
     return articles
 
 
-def load_hf_model(repo_id="google/gemma-2-2b-it"):
-    llm = HuggingFaceEndpoint(
-        repo_id=repo_id,
-        task="text-generation",
-        huggingfacehub_api_token=st.secrets["HF_TOKEN"],
-    )
+def load_hf_model(repo_id="google/gemma-2-2b-it", api_token=None):
+    if api_token is None:
+        llm = HuggingFaceEndpoint(
+            repo_id=repo_id,
+            task="text-generation",
+        )
+    else:
+        llm = HuggingFaceEndpoint(
+            repo_id=repo_id, task="text-generation", huggingfacehub_api_token=api_token
+        )
 
     return ChatHuggingFace(llm=llm)
 

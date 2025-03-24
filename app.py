@@ -21,6 +21,7 @@ st.title("News Sentiment Analyzer")
 st.sidebar.header("Configuration")
 
 company = st.sidebar.text_input("Enter Company Name", "apple")
+company = st.sidebar.text_input("Enter HuggingFace API TOKEN", "...")
 process_button = st.sidebar.button("Run Analysis")
 
 if process_button:
