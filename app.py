@@ -82,7 +82,7 @@ if process_button:
             },
         }
     )
-
+    st.write(comp_diff_list)
     # Display Results
     st.write("## Final Sentiment Analysis")
     st.json(
