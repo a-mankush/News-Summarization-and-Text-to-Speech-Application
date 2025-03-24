@@ -66,9 +66,10 @@ if process_button:
     )
 
     comp_diff_list = []
-    print("GETTING COMP DIF LIST")
-    for value in dict(comp_diff_result).values():
-        comp_diff_list.append(dict(value))
+    for key, value in dict(comp_diff_result).items():
+        # print(f"{key}: {value}")
+        for v in value:
+            comp_diff_list.append(dict(v))
 
     sentiment_dist = cal_sentiment_dist(article_result)
     final_sentiment_chain = final_sentiment_prompt | model | StrOutputParser()
@@ -82,8 +83,7 @@ if process_button:
             },
         }
     )
-    st.write(comp_diff_list)
-    st.write(comp_diff_result)
+
     # Display Results
     st.write("## Final Sentiment Analysis")
     st.json(
