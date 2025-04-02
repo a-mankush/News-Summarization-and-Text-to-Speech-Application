@@ -1,7 +1,13 @@
 import json
 import time
 
-from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
+import streamlit as st
+from langchain_core.output_parsers import (
+    JsonOutputParser,
+    PydanticOutputParser,
+    StrOutputParser,
+)
+
 from schema import Article, ComparativeSentimentScore
 from templates import article_template, coverage_diff_template, final_sentiment_prompt
 from utils import (
@@ -13,8 +19,6 @@ from utils import (
     load_hf_model,
     translate_to_hindi,
 )
-
-import streamlit as st
 
 # Streamlit UI Setup
 st.title("News Sentiment Analyzer")
@@ -49,7 +53,7 @@ if process_button:
     # Step 4: Process Articles
     progress_bar.progress(70)
     st.write("### Analyzing Articles...")
-    article_chain = article_template | model | article_parser
+    article_chain = article_template | model | JsonOutputParser()
     article_result = []
     for article in articles:
         try:
