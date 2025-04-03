@@ -53,7 +53,7 @@ if process_button:
     # Step 4: Process Articles
     progress_bar.progress(70)
     st.write("### Analyzing Articles...")
-    article_chain = article_template | model | JsonOutputParser()
+    article_chain = article_template | model | article_parser
     article_result = []
     for article in articles:
         try:
