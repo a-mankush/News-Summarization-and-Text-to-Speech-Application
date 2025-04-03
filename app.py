@@ -45,7 +45,9 @@ if process_button:
     # Step 3: Load Language Model
     progress_bar.progress(50)
     st.write("### Loading Sentiment Analysis Model...")
-    model = load_hf_model(api_token=api_token)
+    model = load_hf_model(
+        repo_id="mistralai/Mistral-7B-Instruct-v0.2", api_token=api_token
+    )
 
     article_parser = PydanticOutputParser(pydantic_object=Article)
     comp_diff_parser = PydanticOutputParser(pydantic_object=ComparativeSentimentScore)
