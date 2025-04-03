@@ -58,7 +58,7 @@ coverage_diff_template = PromptTemplate(
 - Use exact topic names from articles
 
 **Example Output:**
-{{
+
   "Coverage Differences": [
     {{
       "Comparison": "Article 1 focuses on financial success while Article 2 emphasizes regulatory challenges",
@@ -69,7 +69,7 @@ coverage_diff_template = PromptTemplate(
       "Impact": "Shows tension between R&D capabilities and operational execution challenges"
     }}
   ]
-}}
+
 
 **Required Output Format (JSON):**
 {format_instructions}
